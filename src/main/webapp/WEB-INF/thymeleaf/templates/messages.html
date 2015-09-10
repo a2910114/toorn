@@ -1,0 +1,163 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Last news</title>
+    <script type="text/javascript">
+    $("[data-collapse-group='myDivs']").click(function () {
+    var $this = $(this);
+    $("[data-collapse-group='myDivs']:not([data-target='" + $this.data("target") + "'])").each(function () {
+        $($(this).data("target")).removeClass("in").addClass('collapse');
+    });
+});
+    </script>
+</head>
+<body>
+<div class="container">
+    <div th:include="blocks/header" th:remove="tag"/>
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Продукт 1
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-2" style="width:20%">
+                            <ul class="nav nav-pills nav-stacked" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#link1" aria-controls="link1" role="tab" data-toggle="pill">Описание</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#link2" aria-controls="link2" role="tab" data-toggle="pill">
+                                        Технические характеристики
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#link3" aria-controls="link3" role="tab" data-toggle="pill">Стоимость</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#link4" aria-controls="link4" role="tab" data-toggle="pill">Используют</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-9" style="width:80%">
+                            <div class="tab-content">
+                                <div role="tabpanel" id="link1" class="tab-pane active">
+                                    <div class="row">
+                                        <div class="col-sm-9" >
+                                            <p class="text-justify">Замена старого/изношенного покрытия направляющийх
+                                                станка
+                                                на материал немецкого производителя Biplast-V - листы полиформальдегида,
+                                                обладающие более низким
+                                                коэфициентом трения, большей износостойкостью и устойчивостью к
+                                                нагрузкам и
+                                                высоким
+                                                температурам по сравнению с традиционными, металическими,
+                                                термопластическими и
+                                                термореактивными материалами.
+                                            </p>
+                                            <p class="text-justify">
+                                                Для наклеивания материала Biplast-V прексно себя зарекомендовала 2-х
+                                                компонентная
+                                                система, состоящая из клейкого вещества IP 25A и отвердителя IP 25В,
+                                                а также
+                                                клейкого промотора А+В, которая используеться склеивания металических
+                                                и не
+                                                металических поверхностей.
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-3" style="padding:0px">
+                                            <img src="../../../resources/img/iplastic.jpg" th:src="@{/img/iplastic.jpg}"
+                                                 alt="I-Plastic Biplast-V" class="img-rounded img-responsive"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" id="link2" class="tab-pane">
+                                    Технические характеристики продукта 1
+                                </div>
+                                <div role="tabpanel" id="link3" class="tab-pane">
+                                    Стоимомть продукта 1
+                                </div>
+                                <div role="tabpanel" id="link4" class="tab-pane">
+                                    Используют продукт 1
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse"
+                       data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Продукт 2
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    <div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+                            <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="home">1</div>
+                            <div role="tabpanel" class="tab-pane" id="profile">2</div>
+                            <div role="tabpanel" class="tab-pane" id="messages">3</div>
+                            <div role="tabpanel" class="tab-pane" id="settings">4</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse"
+                       data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Продукт 3
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    Описание продукта 3
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Resent messages</div>
+        <div class="panel-body">
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success" th:each="message : ${messages}">
+                    <p th:text="${message.message}"></p>
+
+                    <p th:text="${message.creationDate}"></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div th:include="blocks/footer" th:remove="tag"/>
+</body>
+</html>
