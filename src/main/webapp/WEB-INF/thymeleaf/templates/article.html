@@ -1,0 +1,27 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="blocks/headTag :: headTag"></div>
+    <meta charset="UTF-8"/>
+    <title>Last news</title>
+</head>
+<body>
+<div class="container">
+    <div th:include="blocks/header" th:remove="tag"/>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Resent messages</div>
+        <div class="panel-body">
+            <ul>
+                <li class="list-group-item list-group-item-success">
+                    <p th:text="${article.title}"></p>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div th:include="blocks/footer" th:remove="tag"/>
+</body>
+</html>

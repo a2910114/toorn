@@ -14,6 +14,7 @@ import java.util.List;
  */
 @Service
 public class MessageServiceImpl implements MessageService {
+    //TODO:  delete this and all that connected to messages
 
     @Autowired
     private MessageTable messageTable;

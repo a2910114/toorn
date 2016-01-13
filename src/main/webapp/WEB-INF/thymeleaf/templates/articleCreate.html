@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru-RU" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <div th:replace="blocks/headTag :: headTag"></div>
+    <title>Создание статьи</title>
+    <script src="../../../resources/js/tinymce/tinymce.min.js" th:src="@{/js/tinymce/tinymce.min.js}"></script>
+
+    <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+		$(document).ready(function(){
+			var toDelete = [];
+			$("#btn1").click(function(){
+				var counter = document.getElementById('one');
+				var linkCount = document.getElementById('toInsert').getElementsByTagName('textarea').length + 1;
+				$("#toInsert").append('<div id="insDiv'+counter.value+'" class="row"></div>')
+				$("#insDiv"+counter.value).append('<div class="col-xs-2" style="width:20%" id="insColl1'+counter.value+'"></div>');
+				$("#insColl1"+counter.value).append('<input type="text" name="contents['+linkCount+'].link" id="contents'+linkCount+'.link" class="form-control" placeholder="ссылка" required="required" autofocus="autofocus"/>');
+
+				$("#insDiv"+counter.value).append('<div class="col-xs-9" style="width:80%" id="insColl2'+counter.value+'"></div>');
+				$("#insColl2"+counter.value).append('<textarea id="articleContent'+counter.value+'" name="contents['+linkCount+'].text" class="form-control" placeholder="Текст"  autofocus="autofocus"></textarea>');
+                $("#insDiv"+counter.value).append('<script type="text/javascript">tinymce.init({selector: "#articleContent'+counter.value+'",plugins: "imagetools image bdesk_photo code table link colorpicker",toolbar: "undo redo | styleselect | fontselect | fontsizeselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"});<\/script>');
+
+				toDelete.push(counter.value);
+				counter.value = parseInt(counter.value) + 1;
+				firstElement = firstElement + 1;
+			});
+
+			$("#btn3").click(function(){
+				var index = toDelete.pop();
+				$("#insDiv"+index).remove();
+			});
+		});
+		/*]]>*/
+	</script>
+
+    <script type="text/javascript" th:inline="javascript">
+        tinymce.init({
+            selector: "#articleContent",
+			plugins: "imagetools image bdesk_photo code table link colorpicker",
+			toolbar: "undo redo | styleselect | fontselect | fontsizeselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div th:include="blocks/header" th:remove="tag"/>
+
+    <form method="POST"
+          th:object="${article}">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <input type="hidden" id="one"  value="1"/>
+
+        <h2 class="form-signin-heading">Создание новой статьи</h2>
+
+        <input type="text" th:field="*{title}" class="form-control"
+               placeholder="Заголовок" required="required" autofocus="autofocus"/>
+
+        <div class="row">
+            <div class="col-xs-2" style="width:20%">
+                <input type="text" th:field="*{contents[0].link}" class="form-control"
+                       placeholder="ссылка" required="required" autofocus="autofocus"/>
+            </div>
+            <div class="col-sm-9" style="width:80%">
+                <textarea id="articleContent" th:field="*{contents[0].text}" class="form-control"
+                          placeholder="Текст"  autofocus="autofocus"></textarea>
+            </div>
+        </div>
+
+        <div id="toInsert"></div>
+
+        <button class="btn btn-lg btn-primary btn-block">Создать</button>
+    </form>
+    <button id="btn1">Добавить ссылку</button>
+    <button id="btn3">Удалить последнюю ссылку</button>
+</div>
+
+<div th:include="blocks/footer" th:remove="tag"/>
+</body>
+</html>

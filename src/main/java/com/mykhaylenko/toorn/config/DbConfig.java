@@ -50,6 +50,10 @@ public class DbConfig implements EnvironmentAware {
 
     private final static String PROP_HIBERNATE_HB2DDl_AUTO = "hibernate.hbm2ddl.auto";
 
+    private final static String PROP_HIBERNATE_LAZY_LOAD = "hibernate.enable_lazy_load_no_trans";
+
+    private final static String PROP_HIBERNATE_CONNECTION_ENCODING = "hibernate.connection.characterEncoding";
+
     private Environment environment;
 
     @Bean
@@ -129,6 +133,8 @@ public class DbConfig implements EnvironmentAware {
         properties.setProperty(PROP_HIBERNATE_DIALECT, environment.getProperty(PROP_HIBERNATE_DIALECT));
         properties.setProperty(PROP_HIBERNATE_SHOW_SQL, environment.getProperty(PROP_HIBERNATE_SHOW_SQL));
         properties.setProperty(PROP_HIBERNATE_HB2DDl_AUTO, environment.getProperty(PROP_HIBERNATE_HB2DDl_AUTO));
+        properties.setProperty(PROP_HIBERNATE_LAZY_LOAD, environment.getProperty(PROP_HIBERNATE_LAZY_LOAD));
+        properties.setProperty(PROP_HIBERNATE_CONNECTION_ENCODING, environment.getProperty(PROP_HIBERNATE_CONNECTION_ENCODING));
         return properties;
     }
 }

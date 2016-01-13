@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="blocks/headTag :: headTag"></div>
+    <title>Турн</title>
+
+    <style>
+        #map {
+        height: 400px;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+      function initialize() {
+		var myLatLng = {lat: 46.976796, lng: 31.979689};
+        var mapCanvas = document.getElementById('map');
+
+
+
+        var mapOptions = {
+          center: new google.maps.LatLng(46.976796, 31.979689),
+          zoom: 13,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+		var marker = new google.maps.Marker({
+			position: myLatLng,
+			map: map,
+			title: 'ТУРН, ул. Спасская 1, офис 406.'
+		  });
+
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+</head>
+<body>
+<div class="container">
+    <div th:include="blocks/header" th:remove="tag"/>
+
+    <div class="page-header">
+        <h1>Контактные данные</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-7" id="map">
+            <div ></div>
+        </div>
+
+        <div class="col-xs-5">
+            <address>
+                <strong>ООО Малое предприятие "ТУРН"</strong><br/>
+                54030, г. Николаев, ул, Спасская 14/64<br/>
+                <abbr title="Телефон/Факс">Тел./Факс:</abbr> +38(0512)501048<br/>
+                Факс: +38(0512)355064<br/>
+            </address>
+
+            <address>
+                <strong>Офис предприятия:</strong><br/>
+                Украина, 54030 г. Николаев, ул. Спаская, 1<br/>
+                <a href="mailto:#">toorn@ukrpost.ua</a>
+            </address>
+        </div>
+    </div>
+
+
+</div>
+
+<div th:include="blocks/footer"/>
+</body>
+</html>

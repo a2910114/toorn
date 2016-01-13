@@ -1,0 +1,81 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <div th:replace="blocks/headTag :: headTag"></div>
+    <meta charset="UTF-8"/>
+    <title>Last news</title>
+</head>
+<body>
+<div class="container">
+    <div th:include="blocks/header" th:remove="tag"/>
+
+    <div sec:authorize="isAuthenticated()">
+
+        <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+            <a th:href="@{'/articles/create/'}">Создать статью</a>
+        </button>
+    </div>
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default" th:each="article, iterStat : ${articles}">
+            <div class="panel-heading" role="tab" th:attr="id='headingArticle'+${article.id}">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" th:class="(${iterStat.index}!=0) ? 'collapsed'"
+                       th:attr="href='#collapseArticle'+${article.id}, aria-controls='collapseArticle'+${article.id}, aria-expanded=(${iterStat.first}? 'true' : 'false')"
+                       th:text="${article.title}">
+                    </a>
+                    <div sec:authorize="isAuthenticated()">
+                        <button type="button" class="btn btn-default">
+                            <a th:href="@{'/articles/edit/'+${article.id}}">
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                            </a>
+                        </button>
+                        <button type="button" class="btn btn-default">
+                            <a th:href="@{'/articles/delete/'+${article.id}}">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </button>
+                    </div>
+                </h4>
+            </div>
+            <div th:attr="id='collapseArticle'+${article.id}, aria-labelledby='headingArticle'+${article.id}"
+                 th:class="${iterStat.first} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+                 role="tabpanel" >
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-2" style="width:20%">
+                            <ul class="nav nav-pills nav-stacked" role="tablist">
+                                <li role="presentation" th:class="${forStat.first} ? 'active'" th:each="content, forStat : ${article.contents}">
+                                    <a th:attr="href='#link'+${content.id}, aria-controls='link'+${content.id}"  role="tab" data-toggle="pill" th:text="${content.link}"></a>
+                                    <div sec:authorize="isAuthenticated()">
+
+                                        <button type="button" class="btn btn-default">
+                                            <a th:href="@{'/articles/deletelink/'+${content.id}}">
+                                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                            </a>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-9" style="width:80%">
+                            <div class="tab-content">
+                                <div role="tabpanel" th:attr="id='link'+${content.id}"
+                                     th:class="${forStat.first} ? 'tab-pane active' : 'tab-pane'" th:each="content, forStat : ${article.contents}">
+                                    <div class="text-justify" th:utext="${content.text}" th:remove="tag">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:include="blocks/footer" th:remove="tag"/>
+</body>
+</html>

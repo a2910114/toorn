@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="blocks/headTag :: headTag"></div>
+    <title>Турн</title>
+</head>
+<body>
+<div class="container">
+    <div th:include="blocks/header" th:remove="tag"/>
+
+    <div class="page-header">
+        <h1>Technology information</h1>
+    </div>
+
+</div>
+
+<div th:include="blocks/footer"/>
+</body>
+</html>
