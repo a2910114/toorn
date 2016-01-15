@@ -31,7 +31,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "com.mykhaylenko.toorn.repository")
-@PropertySource("classpath:database.properties")
+@PropertySource("classpath:local.database.properties")
 public class DbConfig implements EnvironmentAware {
 
     private final static String PROP_DATABASE_DRIVER = "db.driver";
