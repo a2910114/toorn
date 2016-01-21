@@ -21,13 +21,13 @@
             </div>
             <div class="navbar-collapse collapse navHeaderCollapse">
                 <ul class="nav navbar-nav">
-                    <li><a th:href="@{/messages}">Ремонт и модернизация</a></li>
+                    <li><a th:href="@{/technology}">Ремонт и модернизация</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
-                    <li><a th:href="@{/articles}">Ремонт и модернизация2</a></li>
+                    <li><a th:href="@{/messages}">Продукция</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
-                    <li><a th:href="@{/technology}">Технология</a></li>
+                    <li><a th:href="@{/articles}">Продукция2</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a th:href="@{/contacts}">Контакты</a></li>
@@ -67,25 +67,39 @@
                 <ol class="carousel-indicators">
                     <li data-target="#carousel" data-slide-to="0" class="active"></li>
                     <li data-target="#carousel" data-slide-to="1"></li>
+                    <li data-target="#carousel" data-slide-to="2"></li>
+                    <li data-target="#carousel" data-slide-to="3"></li>
+                    <li data-target="#carousel" data-slide-to="4"></li>
                     <!--<li data-target="#carousel" data-slide-to="2"></li>-->
                 </ol>
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <img src="../../../resources/img/skoda.png" th:src="@{/img/skoda.png}"/>
-                        <div class="carousel-caption">
-                            <h3>Skoda</h3>
-                            <p>Supper cool Skoda automobiles</p>
-                        </div>
+                        <a href="http://www.skodamt.com/en/" target="_blank">
+                            <img src="../../../resources/img/skoda.png" th:src="@{/img/skoda.png}"/>
+                        </a>
                     </div>
                     <div class="item">
-                        <img src="../../../resources/img/heidenhain.png" th:src="@{/img/heidenhain.png}"
-                             style="max-height:250px"/>
-                        <div class="carousel-caption">
-                            <h3>Heidenhain</h3>
-                            <p>Supper cool Heidenhain product</p>
-                        </div>
+                        <a href="http://www.heidenhain.com/" target="_blank">
+                            <img src="../../../resources/img/heidenhain.png" th:src="@{/img/heidenhain.png}"
+                                 style="max-height:250px"/>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="http://www.fermatmachinery.com/" target="_blank">
+                            <img src="../../../resources/img/fermat_logo.png" th:src="@{/img/fermat_logo.png}"/>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="http://www.i-plastic.de/NotInMenue/HOMEE/homee.html" target="_blank">
+                            <img src="../../../resources/img/iplastic_logo.png" th:src="@{/img/iplastic_logo.png}"/>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="http://www.jirkaspol.cz/home.html" target="_blank">
+                            <img src="../../../resources/img/jirka_logo.png" th:src="@{/img/jirka_logo.png}"/>
+                        </a>
                     </div>
                 </div>
 
