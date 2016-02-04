@@ -8,11 +8,13 @@
 <footer style="padding-bottom: 20px;">
     <div class="container">
         <hr style="  border-top: 1px solid #A7A6A6;"/>
-        <small class="text-muted">
-            2015, OOO МП "ТУРН" ©
-            Все права защищены и охраняются в соответствии с действующим
-            законодательством Украины.
+        <small class="text-muted" id="footer_value">
         </small>
+        <script>
+            var year = new Date().getFullYear();
+            var text = ', OOO МП "ТУРН" © Все права защищены и охраняются в соответствии с действующим законодательством Украины.';
+            document.getElementById("footer_value").innerHTML = year + text ;
+        </script>
     </div>
 </footer>
 </body>
