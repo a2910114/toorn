@@ -1,6 +1,5 @@
 package com.mykhaylenko.toorn.config.security;
 
-import com.mykhaylenko.toorn.model.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,6 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .addFilterBefore(filter, CsrfFilter.class)
             .authorizeRequests()
 //                .antMatchers("/messages").hasAuthority(UserRole.ROLE_ADMIN.name()) //==.antMatchers("/messages").access("hasRole('ROLE_SPITTER')")
+                .antMatchers("/toorn/registration").denyAll() //==.antMatchers("/messages").access("hasRole('ROLE_SPITTER')")
                 .anyRequest().permitAll()
             .and()
                 .formLogin()
